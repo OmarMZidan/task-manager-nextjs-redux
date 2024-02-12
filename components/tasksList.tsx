@@ -32,36 +32,6 @@ export default function TasksList() {
     }
   }, [tasks, filter]);
 
-  // const handleToggleCompleted = useCallback(
-  //   (id: string) => {
-  //     dispatch(toggleCompletedTask(id));
-  //   },
-  //   [dispatch]
-  // );
-
-  // const handleRemoveTask = useCallback(
-  //   (id: string) => {
-  //     dispatch(removeTask(id));
-  //   },
-  //   [dispatch]
-  // );
-
-  // const handleEditInputChange = useCallback(
-  //   (e: React.ChangeEvent<HTMLInputElement>) => {
-  //     taskToEdit && setTaskToEdit({ ...taskToEdit, text: e.target.value });
-  //   },
-  //   [taskToEdit]
-  // );
-
-  // const handleSubmitEdit = useCallback(
-  //   (e: React.FormEvent<HTMLFormElement>) => {
-  //     e.preventDefault();
-  //     taskToEdit &&
-  //       dispatch(editTask({ id: taskToEdit?.id, text: taskToEdit?.text }));
-  //     setIsModalOpen(false);
-  //   },
-  //   [dispatch, taskToEdit]
-  // );
   const handleToggleCompleted = (id: string) => {
     try {
       dispatch(toggleCompletedTask(id));
@@ -95,7 +65,7 @@ export default function TasksList() {
   return (
     <>
       <Filter />
-      <ul className=" mt-12">
+      <ul className="mt-12">
         {filteredTasks.map((task) => (
           <TaskItem
             key={task.id}
@@ -106,49 +76,8 @@ export default function TasksList() {
               setIsModalOpen(true);
             }}
             onClickRemove={() => handleRemoveTask(task.id)}
+            onClickText={() => handleToggleCompleted(task.id)}
           />
-          // <li
-          //   key={task.id}
-          //   className="flex w-full items-center border-b-2 py-4"
-          // >
-          //   <div className="px-3 sm:px-10 flex flex-grow justify-between">
-          //     <div className="flex items-center gap-4">
-          //       <input
-          //         type="checkbox"
-          //         className="w-4 h-4 accent-primary bg-gray-100 border-gray-600 rounded cursor-pointer"
-          //         aria-label="toggle-todo"
-          //         onChange={() => handleToggleCompleted(task.id)}
-          //         checked={task.completed}
-          //       />
-          //       <p
-          //         className={`text-gray-600 ${
-          //           task.completed ? "line-through text-opacity-50" : ""
-          //         }`}
-          //       >
-          //         {task.text}
-          //       </p>
-          //     </div>
-          //     <div className="flex gap-2">
-          //       <button
-          //         aria-label="edit-todo"
-          //         className=""
-          //         onClick={() => {
-          //           setTaskToEdit(task);
-          //           setIsModalOpen(true);
-          //         }}
-          //       >
-          //         <MdEdit className="h-5 w-5 text-primary hover:text-secondary focus:scale-125 hover:scale-125 active:scale-100 transition" />
-          //       </button>
-          //       <button
-          //         aria-label="remove-todo"
-          //         className=""
-          //         onClick={() => handleRemoveTask(task.id)}
-          //       >
-          //         <MdDelete className="h-5 w-5 text-primary hover:text-secondary focus:scale-125 hover:scale-125 active:scale-100 transition" />
-          //       </button>
-          //     </div>
-          //   </div>
-          // </li>
         ))}
       </ul>
       <Modal

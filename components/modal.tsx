@@ -22,7 +22,7 @@ export default function Modal({
       <div
         onClick={(e) => e.stopPropagation()}
         className={`
-          bg-gray-100 w-2/4 max-w-2xl rounded-xl shadow p-6 transition-all 
+          bg-gray-100 w-[95%] sm:w-2/4 max-w-2xl rounded-xl shadow p-6 transition-all 
           ${isModalOpen ? "scale-100 opacity-100 " : "scale-125 opacity-0"}
         `}
       >
@@ -48,12 +48,12 @@ export default function Modal({
               className="flex-grow p-2 border-[1px]  focus:outline-none"
               placeholder={type === "add" ? "Add a new task" : "Edit your task"}
               onChange={onChange}
-              autoFocus={isModalOpen}
+              autoFocus
               autoComplete="off"
             />
             <button
               type="submit"
-              className="bg-secondary w-[7%] flex justify-center items-center focus:scale-110 hover:scale-110 active:scale-100 transition cursor-pointer"
+              className="bg-secondary w-[10%] flex justify-center items-center focus:scale-110 hover:scale-110 active:scale-100 transition cursor-pointer"
               aria-label={type === "add" ? "add-task" : "edit-task"}
             >
               <IoAdd className="text-white text-3xl" />

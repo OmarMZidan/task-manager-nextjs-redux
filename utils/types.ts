@@ -1,3 +1,7 @@
+interface ReduxProviderProps {
+  children: React.ReactNode;
+}
+
 interface Task {
   id: string;
   text: string;
@@ -23,4 +27,5 @@ interface TaskItemProps {
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onClickEdit: (e: React.MouseEvent<HTMLElement>) => void;
   onClickRemove: (e: React.MouseEvent<HTMLElement>) => void;
+  onClickText: (e: React.MouseEvent<HTMLElement>) => void;
 }

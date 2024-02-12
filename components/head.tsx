@@ -19,18 +19,22 @@ export default function Head() {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (taskInput.trim() === "") return;
-    dispatch(addTask(taskInput));
-    setTaskInput("");
-    setIsModalOpen(false);
+    try {
+      dispatch(addTask(taskInput));
+      setTaskInput("");
+      setIsModalOpen(false);
+    } catch (error) {
+      console.error("Failed to add task:", error);
+    }
   };
 
   return (
-    <div className="bg-primary rounded-t-md h-24 border-b-2 border-primary shadow-2xl px-3 sm:px-10 relative">
-      <h1 className="font-bold text-2xl text-gray-50 leading-none text-center py-5 uppercase">
+    <div className="bg-primary sm:rounded-t-md h-28 sm:h-24 border-b-2 border-primary shadow-2xl px-3 sm:px-10 relative">
+      <h1 className="font-bold text-2xl text-gray-50 leading-none text-center py-8 sm:py-5 uppercase">
         Task Manager
       </h1>
       <button
-        className="absolute bg-secondary right-10 w-16 h-16 -bottom-8 rounded-full flex justify-center items-center focus:scale-110 hover:scale-110 active:scale-100 transition cursor-pointer drop-shadow-xl"
+        className="absolute bg-secondary right-10 w-14 h-14 -bottom-7 sm:w-16 sm:h-16 sm:-bottom-8 rounded-full flex justify-center items-center focus:scale-110 hover:scale-110 active:scale-100 transition cursor-pointer drop-shadow-xl"
         aria-label="open-modal"
         onClick={() => {
           setIsModalOpen(true);
@@ -46,24 +50,6 @@ export default function Head() {
         taskInput={taskInput}
         onChange={handleChange}
       ></Modal>
-      {/* <form onSubmit={handleSubmit} className="w-full flex justify-between">
-        <input
-          name="text"
-          type="text"
-          required
-          value={taskInput}
-          onChange={handleChange}
-          className="flex-grow p-2 border-[1px]  focus:outline-none"
-          placeholder="Add a task"
-        />
-        <button
-          type="submit"
-          className="bg-secondary w-[7%] flex justify-center items-center focus:scale-110 hover:scale-110 active:scale-100 transition cursor-pointer"
-          aria-label="Add Task"
-        >
-          <IoAdd className="text-white text-3xl" />
-        </button>
-      </form> */}
     </div>
   );
 }

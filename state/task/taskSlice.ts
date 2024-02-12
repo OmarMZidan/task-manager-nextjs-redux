@@ -8,9 +8,9 @@ export const TasksFilters = {
 
 const initialState: TasksState = {
   tasks: [
-    { id: "1", text: "First Task", completed: false },
-    { id: "2", text: "Second Task", completed: true },
-    { id: "3", text: "Third Task", completed: false },
+    { id: "1", text: "Sign up for training", completed: false },
+    { id: "2", text: "Cood dinner", completed: true },
+    { id: "3", text: "Vacation planning", completed: false },
   ],
   filterBy: TasksFilters.ALL,
 };
@@ -61,48 +61,3 @@ export const {
   tasksFilter,
 } = taskSlice.actions;
 export default taskSlice.reducer;
-
-// import { PayloadAction, createSlice, nanoid } from "@reduxjs/toolkit";
-
-// interface Task {
-//   id: string;
-//   text: string;
-//   completed: boolean;
-// }
-// interface TaskState {
-//   tasks: Task[];
-// }
-
-// const initialState: TaskState = {
-//   tasks: [
-//     { id: "1", text: "First Task", completed: false },
-//     { id: "2", text: "Second Task", completed: true },
-//   ],
-// };
-// const taskSlice = createSlice({
-//   name: "task",
-//   initialState,
-//   reducers: {
-//     addTask: (state, action: PayloadAction<string>) => {
-//       const id = nanoid();
-//       // Mutating state here, but redux toolkit handles immutability under the hood.
-//       state.tasks.push({
-//         id,
-//         text: action.payload,
-//         completed: false,
-//       });
-//     },
-//     // removeTask: (state, action: PayloadAction<string>) => {
-//     //   state.tasks = state.tasks.filter((task) => task.id !== action.payload);
-//     // },
-//     // completeTask: (state, action: PayloadAction<string>) => {
-//     //   const task = state.tasks.find((task) => task.id === action.payload);
-//     //   if (task) {
-//     //     task.completed = !task.completed;
-//     //   }
-//     // },
-//   },
-// });
-
-// export const { addTask } = taskSlice.actions;
-// export default taskSlice.reducer;

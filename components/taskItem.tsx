@@ -6,6 +6,7 @@ export default function TaskItem({
   onChange,
   onClickEdit,
   onClickRemove,
+  onClickText,
 }: TaskItemProps) {
   const { completed, text } = task;
   return (
@@ -20,9 +21,10 @@ export default function TaskItem({
             checked={completed}
           />
           <p
-            className={`text-gray-600 ${
+            className={`text-gray-600 cursor-pointer ${
               completed ? "line-through text-opacity-50" : ""
             }`}
+            onClick={onClickText}
           >
             {text}
           </p>
