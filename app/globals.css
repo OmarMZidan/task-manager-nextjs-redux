@@ -2,12 +2,31 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --primary: #5a5ee7;
+  --secondary: #f57173;
+}
+
 body {
   background: linear-gradient(
     195deg,
-    #f57173 0%,
-    #f57173 60%,
-    #5a5ee7 60%,
-    #5a5ee7 100%
+    var(--secondary) 0%,
+    var(--secondary) 60%,
+    var(--primary) 60%,
+    var(--primary) 100%
   );
+}
+
+/* scroll bar styling */
+/* width */
+::-webkit-scrollbar {
+  width: 2px;
+}
+/* Track */
+::-webkit-scrollbar-track {
+  background: white;
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
 }

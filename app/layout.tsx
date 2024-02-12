@@ -1,9 +1,14 @@
 import type { Metadata } from "next";
-import { Inter, Space_Mono } from "next/font/google";
+import { Space_Mono } from "next/font/google";
 import "./globals.css";
 import { ReduxProvider } from "@/state/provider";
 
-const font = Space_Mono({ weight: "400", subsets: ["latin"] });
+const font = Space_Mono({
+  weight: "400",
+  subsets: ["latin"],
+  display: "swap",
+  // adjustFontFallback: false,
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -17,9 +22,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${font.className} h-screen w-screen flex justify-center items-center`}
-      >
+      <body className={`${font.className} h-screen w-screen overflow-hidden`}>
         <ReduxProvider>{children}</ReduxProvider>
       </body>
     </html>
